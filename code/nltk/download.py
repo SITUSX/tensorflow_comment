@@ -1,2 +1,4 @@
 import nltk
-nltk.download()
+nltk.download('brown')
+nltk.download('punkt')
+nltk.download('wordnet')
