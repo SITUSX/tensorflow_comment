@@ -8,6 +8,7 @@ from nltk.stem import WordNetLemmatizer
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
+# 提取词汇表
 f = open('../../data/lexcion.pickle', 'rb')
 lex = pickle.load(f)
 f.close()
@@ -91,6 +92,7 @@ batch_size = 100
 
 def train_neural_network(X, Y):
     predict = neural_network(X)
+    # 损失函数最小化
     cost_func = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=predict, labels=Y))
     optimizer = tf.train.AdamOptimizer().minimize(cost_func)
 

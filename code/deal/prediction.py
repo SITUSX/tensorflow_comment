@@ -18,7 +18,7 @@ n_layer_2 = 2000  # hide layer(隐藏层)听着很神秘，其实就是除输入
 
 n_output_layer = 3  # 输出层
 
-
+# 网络结构，新版可以使用tensorflow自带方法直接加载
 def neural_network(data):
     # 定义第一层"神经元"的权重和biases
     layer_1_w_b = {'w_': tf.Variable(tf.random_normal([n_input_layer, n_layer_1])),
@@ -63,8 +63,15 @@ def prediction(tweet_text):
         print(predict.eval(feed_dict={X: [features]}))
         # [[val1,val2,val3]]
         res = session.run(tf.argmax(predict.eval(feed_dict={X: [features]}), 1))
-        return res
+        if res[0] == 0:
+            print('negative')
+        elif res[0] == 1:
+            print('neutral')
+        elif res[0] == 2:
+            print('positive')
+        else:
+            print('error')
 
 
-print(prediction("I'm so happy"))
+prediction("ha")
 

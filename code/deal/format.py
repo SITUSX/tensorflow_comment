@@ -17,12 +17,18 @@ def useful_filed(org_file, output_file):
         try:
             for line in f:
                 '''
+                处理前格式：
                 积极 "4"
                 tweetID "2193601966"
                 时间 "Tue Jun 16 08:40:49 PDT 2009"
                 Query "NO_QUERY"
                 用户 "AmandaMarie1028"
                 内容 "Just woke up. Having no school is the best feeling ever"
+                '''
+
+                '''
+                处理后格式：
+                [0, 0, 1]:%:%:%: that's a bummer. You should got David Carr of Third Day to do it. ;D
                 '''
                 line = line.replace('"', '')
                 clf = line.split(',')[0]  # 4
@@ -36,9 +42,6 @@ def useful_filed(org_file, output_file):
                 tweet = line.split(',')[-1]
                 outputline = str(clf) + ':%:%:%:' + tweet
                 output.write(outputline)
-                '''
-                [0, 0, 1]:%:%:%: that's a bummer. You should got David Carr of Third Day to do it. ;D
-                '''
         except Exception as e:
             print(e)
     output.close()  # 处理完成，处理后文件大小127.5M
