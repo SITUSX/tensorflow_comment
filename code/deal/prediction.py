@@ -73,5 +73,5 @@ def prediction(tweet_text):
             print('error')
 
 
-prediction("ha")
+prediction("I'm so happy")
 
